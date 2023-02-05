@@ -17,7 +17,7 @@ test('Get list of available revisions for a document' , () => {
 });
 
 test('Return empty array if there are no revisions for a document', () => {
-    expect(getAvailableRevisions("Invalid title").length).toBe(0);
+    expect(() => getAvailableRevisions("Invalid title")).toThrow(/^Document does not exist.$/);
 });
 
 

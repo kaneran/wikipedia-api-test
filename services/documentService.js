@@ -18,7 +18,11 @@ function getAvailableRevisions(documentTitle) {
       content: revision.content,
       timestamp: revision.timestamp,
     }));
-  return availableRevisions;
+  if (availableRevisions.length > 0) {
+    return availableRevisions;
+  } else {
+    throw "Document does not exist.";
+  }
 }
 
 function getLatestDocument() {
@@ -29,4 +33,8 @@ function getLatestDocument() {
   return sortedAvailableRevisions[0];
 }
 
-module.exports = { getAvailableTitles, getAvailableRevisions, getLatestDocument };
+module.exports = {
+  getAvailableTitles,
+  getAvailableRevisions,
+  getLatestDocument,
+};
