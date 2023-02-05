@@ -1,4 +1,4 @@
-const { getAvailableTitles, getAvailableRevisions} = require("../services/documentService");
+const { getAvailableTitles, getAvailableRevisions, getLatestDocument} = require("../services/documentService");
 
 test('Get list of available titles', () => {
     const availableTitles = getAvailableTitles();
@@ -9,13 +9,19 @@ test('Get list of available titles', () => {
 
 test('Get list of available revisions for a document' , () => {
     const availableRevisions = getAvailableRevisions("Title 1");
-    const {version, content} = availableRevisions[0];
+    const {version, content, timestamp} = availableRevisions[0];
     expect(availableRevisions.length).toBeGreaterThan(0);
-    expect(version).toBe("1");
+    expect(version).toBe(1);
     expect(content).toBe("Hello");
+    expect(timestamp).toBe("1pm")
 });
 
 test('Return empty array if there are no revisions for a document', () => {
     expect(getAvailableRevisions("Invalid title").length).toBe(0);
 });
 
+
+test('Get the current latest version of the document', () => {
+    const {version} = getLatestDocument("Title 1");
+    expect(version).toBe(4);
+});

@@ -16,8 +16,17 @@ function getAvailableRevisions(documentTitle) {
     .map((revision) => ({
       version: revision.version,
       content: revision.content,
+      timestamp: revision.timestamp,
     }));
   return availableRevisions;
 }
 
-module.exports = { getAvailableTitles, getAvailableRevisions };
+function getLatestDocument() {
+  const availableRevisions = getAvailableRevisions("Title 1");
+  const sortedAvailableRevisions = availableRevisions.sort(
+    (a, b) => b.version - a.version
+  );
+  return sortedAvailableRevisions[0];
+}
+
+module.exports = { getAvailableTitles, getAvailableRevisions, getLatestDocument };
