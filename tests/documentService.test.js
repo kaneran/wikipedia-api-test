@@ -1,4 +1,4 @@
-const { getAvailableTitles, getAvailableRevisions } = require("../services/documentService");
+const { getAvailableTitles, getAvailableRevisions} = require("../services/documentService");
 
 test('Get list of available titles', () => {
     const availableTitles = getAvailableTitles();
@@ -18,3 +18,4 @@ test('Get list of available revisions for a document' , () => {
 test('Return empty array if there are no revisions for a document', () => {
     expect(getAvailableRevisions("Invalid title").length).toBe(0);
 });
+
