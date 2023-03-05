@@ -1,6 +1,8 @@
 const {
   getAllDocuments,
   getAllDocumentVersions,
+  addDocumentTitle,
+  addDocumentVersion,
 } = require("../repositories/documentRepository");
 const { validateDocumentTitle } = require("./validationService");
 
@@ -10,9 +12,8 @@ function getAvailableTitles() {
 
 function getAvailableRevisions(documentTitle) {
   validateDocumentTitle(documentTitle);
-  const allRevisions = getAllDocumentVersions();
+  const allRevisions = getAllDocumentVersions(documentTitle);
   const availableRevisions = allRevisions
-    .filter((revision) => revision.title === documentTitle)
     .map((revision) => ({
       version: revision.version,
       content: revision.content,
@@ -34,19 +35,13 @@ function getLatestDocument(documentTitle) {
 }
 
 function addNewDocumentRevision(documentTitle, content) {
-  const allRevisions = getAllDocumentVersions();
-  const { version } = getLatestDocument(documentTitle);
+  const allRevisions = getAllDocumentVersions(documentTitle);
+  if(allRevisions.length === 0){
+    addDocumentTitle(documentTitle)
+  }
+  // const { version } = getLatestDocument(documentTitle);
   //In reality, I would insert this into the database
-  const newRevisions = [
-    ...allRevisions,
-    {
-      title: documentTitle,
-      version: version + 1,
-      content,
-      timestamp: Date(Date.now()).toString(),
-    },
-  ];
-  return newRevisions;
+  addDocumentVersion(documentTitle, content, allRevisions.length);
 }
 
 module.exports = {
