@@ -1,5 +1,5 @@
 const express = require("express");
-const bp = require('body-parser');
+const bp = require("body-parser");
 const {
   getAvailableTitles,
   getAvailableRevisions,
@@ -45,3 +45,4 @@ app.post("/documents/:title", async (req, res) => {
   });
 
 app.listen(3000);
+

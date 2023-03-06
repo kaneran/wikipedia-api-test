@@ -12,6 +12,13 @@
     },
     "rules": {
         "no-unused-vars": "error",
-        "no-undef": "off"
+        "no-undef": "off",
+        "no-const-assign": "error",
+        "no-dupe-else-if": "error",
+        "no-unreachable-loop": "warn",
+        "max-params": "warn",
+        "max-len": ["error", {"code": 150}],
+        "quotes": ["error", "double"],
+        "semi": ["error", "never"]
     }
 }
