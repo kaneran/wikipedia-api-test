@@ -1,13 +1,13 @@
-let documents = [];
-let documentRevisions = [];
+let documents = []
+let documentRevisions = []
 
 function clearDocumentData() {
-  documents = [];
-  documentRevisions = [];
+  documents = []
+  documentRevisions = []
 }
 
 function getAllDocuments() {
-  return documents;
+  return documents
 }
 
 function addDocumentTitle(title){
@@ -15,7 +15,7 @@ function addDocumentTitle(title){
 }
 
 function addDocumentVersion(documentTitle, content, version, timestamp){
-  const documentTimestamp = timestamp ? timestamp : Date(Date.now()).toString();
+  const documentTimestamp = timestamp ? timestamp : Date(Date.now()).toString()
   documentRevisions.push( {
     title: documentTitle,
     content: content,
@@ -25,7 +25,7 @@ function addDocumentVersion(documentTitle, content, version, timestamp){
 }
 
 function getAllDocumentVersions(title) {
-  return documentRevisions.filter((revision) => revision.title === title);
+  return documentRevisions.filter((revision) => revision.title === title)
 }
 
-module.exports = {getAllDocuments, getAllDocumentVersions, addDocumentTitle, addDocumentVersion, clearDocumentData};
+module.exports = {getAllDocuments, getAllDocumentVersions, addDocumentTitle, addDocumentVersion, clearDocumentData}

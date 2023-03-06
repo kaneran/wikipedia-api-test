@@ -19,6 +19,8 @@
         "max-params": "warn",
         "max-len": ["error", {"code": 150}],
         "quotes": ["error", "double"],
-        "semi": ["error", "never"]
+        "semi": ["error", "never"],
+        "arrow-spacing": "error",
+        "eol-last": ["error", "always"]
     }
 }
