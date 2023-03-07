@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 jobs:
-  build-and-test:
+  wikipedia-unit-tests:
     docker:
       - image: "cimg/base:stable"
     steps:
@@ -15,6 +15,6 @@ jobs:
       - run:
           command: npm run test
 workflows:
-  build-and-test:
+  wikipedia-unit-tests:
     jobs:
-      - build-and-test
+      - wikipedia-unit-tests
