@@ -1,0 +1,20 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+jobs:
+  build-and-test:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - checkout
+      - node/install:
+          node-version: "14.19"
+      - node/install-packages
+      - run:
+          command: npm run lint
+      - run:
+          command: npm run test
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test
